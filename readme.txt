@@ -7,13 +7,23 @@ Tested up to: 3.1
 Donate Link: -
 Stable Tag: trunk
 
-Displays the Fourrsquare Send Button on each post.
+Displays the Facebook Send Button on each post.
 
 == Description ==
 
-Adds a Facebook Send Button on each post with the correct permalink.
+Adds a Facebook Send Button under each post with the correct permalink.
+See http://tracking.42dev.eu/projects/facebook-send-button for upcoming features.
 
 == Installation ==
+
+= Through WordPress =
+
+1. Go to “Plugins” in your WordPress admin backend.
+1. Click “Add new”.
+1. Search for “Facebook Send Button”.
+1. Klick on “Install Now” on the first entry.
+
+= Manual =
 
 1. Upload `facebook-send-button.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
