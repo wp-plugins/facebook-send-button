@@ -18,10 +18,10 @@ See http://tracking.42dev.eu/projects/facebook-send-button for upcoming features
 
 = Through WordPress =
 
-1. Go to “Plugins” in your WordPress admin backend.
-1. Click “Add new”.
-1. Search for “Facebook Send Button”.
-1. Klick on “Install Now” on the first entry.
+1. Go to "Plugins" in your WordPress admin backend.
+1. Click "Add new".
+1. Search for "Facebook Send Button".
+1. Klick on "Install Now" on the first entry.
 
 = Manual =
 
