@@ -2,8 +2,8 @@
 /*
 Plugin Name: Facebook Send Button
 Plugin URI: http://tracking.42dev.eu/projects/facebook-send-button
-Description: Display Facebook Send Button on WordPress Posts
-Version: 0.1
+Description: Display Facebook Send Button on WordPress Posts and Pages
+Version: 0.2
 Author: Florian Beer
 Author URI: http://blog.no-panic.at
 */
@@ -35,10 +35,48 @@ Author URI: http://blog.no-panic.at
 
 function facebook_send_button_output($content){
 	global $post;
-	$html = '<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:send href="'.get_permalink($post->id).'" font=""></fb:send>';
-	return $content.$html;
+	
+	// only on single posts or pages
+	if(is_single() || is_page()){
+		$send_btn = '<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:send href="'.get_permalink($post->id).'" font=""></fb:send>';
+		return $content.$send_btn;
+	} else {
+		return $content;
+	}
 }
 
 add_action('the_content', 'facebook_send_button_output');
+
+function facebook_send_button_og() {
+	global $post;
+	
+	// only on single posts or pages
+	if(is_single() || is_page()){
+		
+		// get post thumbnail
+		$post_thumbs = wp_get_attachment_image_src(get_post_thumbnail_id($post->id), 'large');
+		$post_thumb = $post_thumbs[0];
+
+		// if no thumb is specified, search post for images and display first one
+		if($post_thumb[0] == ''){
+				$out = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $match);
+				if ( $out > 0 ){
+					$post_thumb = $match[1][0];
+				}
+		}
+
+?>
+<!-- Facebook Open Graph Tags -->
+<meta property="og:title" content="<?php the_title($post->id); ?>" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="<?php echo $post_thumb; ?>"/>
+<meta property="og:url" content="<?php the_permalink($post->id); ?>" />
+<meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
+<!-- Facebook Open Graph Tags end-->
+<?php
+	}
+}
+
+add_action('wp_head', 'facebook_send_button_og');
 
 ?>

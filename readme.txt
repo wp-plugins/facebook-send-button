@@ -39,6 +39,10 @@ Future versions will make the position configurable.
 
 == Changelog ==
 
+= 0.2 =
+* Only displays button on single posts or pages
+* Inserts Open Graph meta tags to help Facebook figure out the right content (title, url, image, etc.)
+
 = 0.1 =
 * First public release.
 
