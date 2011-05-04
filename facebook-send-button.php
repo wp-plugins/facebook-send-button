@@ -54,8 +54,10 @@ function facebook_send_button_og() {
 	if(is_single() || is_page()){
 		
 		// get post thumbnail
-		$post_thumbs = wp_get_attachment_image_src(get_post_thumbnail_id($post->id), 'large');
-		$post_thumb = $post_thumbs[0];
+		if(function_exists('get_post_thumbnail_id')){
+			$post_thumbs = wp_get_attachment_image_src(get_post_thumbnail_id($post->id), 'large');
+			$post_thumb = $post_thumbs[0];
+		}
 
 		// if no thumb is specified, search post for images and display first one
 		if($post_thumb[0] == ''){

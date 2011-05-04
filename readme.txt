@@ -7,11 +7,11 @@ Tested up to: 3.1
 Donate Link: -
 Stable Tag: trunk
 
-Displays the Facebook Send Button on each post.
+Displays the Facebook Send Button on each post and page.
 
 == Description ==
 
-Adds a Facebook Send Button under each post with the correct permalink.
+Adds a Facebook Send Button under each post and page with the correct permalink.
 See http://tracking.42dev.eu/projects/facebook-send-button for upcoming features.
 
 == Installation ==
@@ -40,6 +40,7 @@ Future versions will make the position configurable.
 == Changelog ==
 
 = 0.2 =
+* Bugfix: Catch if no post thumbnails are used
 * Only displays button on single posts or pages
 * Inserts Open Graph meta tags to help Facebook figure out the right content (title, url, image, etc.)
 
